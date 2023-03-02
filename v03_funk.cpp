@@ -1,6 +1,5 @@
-#include <bits/stdc++.h>
+#include "myLib.h"
 #include "op.h"
-//#include "myLib.h"
 
 using namespace std;
 
