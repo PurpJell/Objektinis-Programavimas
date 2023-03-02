@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <vector>
 #include <fstream>
+#include <limits>
 
 using std::cout;
 using std::cin;
@@ -35,3 +36,5 @@ using std::ios_base;
 
 using std::exception;
 using std::cerr;
+
+using std::numeric_limits;
