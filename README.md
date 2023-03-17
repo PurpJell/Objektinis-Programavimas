@@ -12,3 +12,9 @@ Versija 0.3
 Versija 0.4
 Galima generuoti studentų failą pasirenkant, kiek įrašų generuoti (1k, 10k, 100k, 1M, 10M). Generuojant failą naudojamas insertion sort algoritmas vietoj bubble sort.
 Skaičiuojamas visos programos ir atskirų jos dalių vykdymo laikas.
+
+Vykdymo laikas su skirtingais įrašų kiekiais:
+1k:   5s.
+10k:  10s.
+100k: 34s.
+1M:   rūšiavimas užtruko per ilgai.
