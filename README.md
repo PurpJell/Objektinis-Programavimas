@@ -10,11 +10,12 @@ Versija 0.3
 Į programą įtrauktas išimčių valdymas (kai nerandamas failas, įvedami ne tokie duomenys, neteisingai paruoštas failas) bei programos funkcijos aprašytos faile funk_v03.cpp ir sukurti antraščių failas op.h ir Makefile
 
 Versija 0.4
-Galima generuoti studentų failą pasirenkant, kiek įrašų generuoti (1k, 10k, 100k, 1M, 10M). Generuojant failą naudojamas insertion sort algoritmas vietoj bubble sort.
-Skaičiuojamas visos programos ir atskirų jos dalių vykdymo laikas.
+Galima generuoti studentų failą pasirenkant, kiek įrašų generuoti (1k, 10k, 100k, 1M, 10M). Generuojant failą naudojamas quick sort algoritmas vietoj bubble sort. Skaičiuojamas visos programos ir atskirų jos dalių vykdymo laikas.
 
 Vykdymo laikas su skirtingais įrašų kiekiais:
-1k:   5s.
-10k:  10s.
-100k: 34s.
-1M:   rūšiavimas užtruko per ilgai.
+(Failo generavimas, rūšiavimas, studentų skirstymas, studentų išvedimas, visas laikas)
+1k: 1s, 0s, 0s, 0s, 3s.
+10k: 1s, 0s, 0s, 0s, 2s.
+100k: 2s, 0s, 0s, 0s, 4s.
+1M: 5s, 1s, 0s, 0s, 9s.
+10M: 41s, 38s, 2s, 4s, 95s.
