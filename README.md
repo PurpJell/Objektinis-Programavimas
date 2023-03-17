@@ -8,3 +8,7 @@ Išplėstas programos versijos su vektoriais funkcionalumas, dabar galima pasiri
 
 Versija 0.3
 Į programą įtrauktas išimčių valdymas (kai nerandamas failas, įvedami ne tokie duomenys, neteisingai paruoštas failas) bei programos funkcijos aprašytos faile funk_v03.cpp ir sukurti antraščių failas op.h ir Makefile
+
+Versija 0.4
+Galima generuoti studentų failą pasirenkant, kiek įrašų generuoti (1k, 10k, 100k, 1M, 10M). Generuojant failą naudojamas insertion sort algoritmas vietoj bubble sort.
+Skaičiuojamas visos programos ir atskirų jos dalių vykdymo laikas.
