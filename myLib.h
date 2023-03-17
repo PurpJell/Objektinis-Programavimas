@@ -7,6 +7,8 @@
 #include <vector>
 #include <fstream>
 #include <limits>
+#include <string>
+#include <chrono>
 
 using std::cout;
 using std::cin;
@@ -26,6 +28,7 @@ using std::rand;
 
 using std::copy;
 using std::sort;
+using std::random_shuffle;
 
 using std::vector;
 
@@ -38,3 +41,7 @@ using std::exception;
 using std::cerr;
 
 using std::numeric_limits;
+
+using std::chrono::duration_cast;
+using std::chrono::seconds;
+using std::chrono::system_clock;
