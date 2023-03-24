@@ -10,6 +10,7 @@
 #include <string>
 #include <chrono>
 #include <sstream>
+#include <deque>
 
 using std::cout;
 using std::cin;
@@ -48,3 +49,5 @@ using std::chrono::seconds;
 using std::chrono::system_clock;
 
 using std::stringstream;
+
+using std::deque;
