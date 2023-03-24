@@ -22,3 +22,24 @@ Vykdymo laikas su skirtingais įrašų kiekiais:
 
 Versija 0.4.1
 Atskirtas failo generavimas padarytas atskira funkcija, po kurios nevyksta kiti veiksmai.
+
+Versija 0.5
+Sukurtos skirtingos v0.4 programos versijos, pakeičiančios vector konteinerį į deque ir list.
+
+DEQUE:
+
+(Failo nuskaitymas, rūšiavimas, studentų skirstymas, visas laikas)
+1k:    0s,          0s,         0s,                  4s.
+10k:   0s,          0s,         0s,                  4s.
+100k:  0s,          0s,         0s,                  5s.
+1M:    0s,          1s,         0s,                  8s.
+10M:   9s,          19s,        3s,                  60s.
+
+LIST:
+
+(Failo generavimas, nuskaitymas, rūšiavimas, studentų skirstymas, studentų išvedimas, visas laikas)
+1k:    1s,          0s,          0s,         0s,                  0s,                 4s.
+10k:   1s,          0s,          0s,         0s,                  0s,                 4s.
+100k:  1s,          0s,          0s,         0s,                  0s,                 5s.
+1M:    1s,          1s,          0s,         0s,                  1s,                 7s.
+10M:   7s,          10s,         12s,        3s,                  9s,                 52s.
