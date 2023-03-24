@@ -13,6 +13,7 @@
 #include <chrono>
 #include <sstream>
 #include <deque>
+#include <list>
 
 using std::cout;
 using std::cin;
@@ -53,3 +54,5 @@ using std::chrono::system_clock;
 using std::stringstream;
 
 using std::deque;
+
+using std::list;
