@@ -1,4 +1,6 @@
 #include "op.h"
+#include "op_deque.h"
+#include "op_list.h"
 #include <iostream>
 #include <iomanip>
 #include <string>
