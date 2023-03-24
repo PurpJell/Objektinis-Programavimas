@@ -1,4 +1,6 @@
 #include "op.h"
+#include "op_deque.h"
+#include "op_list.h"
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -10,6 +12,7 @@
 #include <string>
 #include <chrono>
 #include <sstream>
+#include <deque>
 
 using std::cout;
 using std::cin;
@@ -48,3 +51,5 @@ using std::chrono::seconds;
 using std::chrono::system_clock;
 
 using std::stringstream;
+
+using std::deque;
