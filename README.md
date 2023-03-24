@@ -13,9 +13,12 @@ Versija 0.4
 Galima generuoti studentų failą pasirenkant, kiek įrašų generuoti (1k, 10k, 100k, 1M, 10M). Generuojant failą naudojamas quick sort algoritmas vietoj bubble sort. Skaičiuojamas visos programos ir atskirų jos dalių vykdymo laikas.
 
 Vykdymo laikas su skirtingais įrašų kiekiais:
-(Failo generavimas, rūšiavimas, studentų skirstymas, studentų išvedimas, visas laikas)
-1k: 1s, 0s, 0s, 0s, 3s.
-10k: 1s, 0s, 0s, 0s, 2s.
-100k: 2s, 0s, 0s, 0s, 4s.
-1M: 5s, 1s, 0s, 0s, 9s.
-10M: 41s, 38s, 2s, 4s, 95s.
+(Failo generavimas, nuskaitymas, rūšiavimas, studentų skirstymas, studentų išvedimas, visas laikas)
+1k:    1s,          0s,          0s,         0s,                  0s,                 4s.
+10k:   1s,          0s,          0s,         0s,                  0s,                 4s.
+100k:  1s,          0s,          0s,         0s,                  0s,                 5s.
+1M:    1s,          1s,          0s,         0s,                  1s,                 7s.
+10M:   7s,          10s,         12s,        3s,                  9s,                 52s.
+
+Versija 0.4.1
+Atskirtas failo generavimas padarytas atskira funkcija, po kurios nevyksta kiti veiksmai.
