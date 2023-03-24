@@ -164,14 +164,9 @@ void generuoti(vector<studentas> &mas, int &stCount, int &pazNr)
 
 	string failas = "klase"+to_string(records)+".txt";
 	ofstream write(failas);
-	ofstream wkieti("kieti.txt");
-	ofstream wprasti("prasti.txt");
+
 	write<<left<<setw(20)<<"Pavarde"<<setw(15)<<"Vardas "<<tempSt<<endl;
-	write<<"___________________________________________________________________________________________"<<endl;
-	wkieti<<left<<setw(20)<<"Pavarde"<<setw(15)<<"Vardas "<<tempSt<<endl;
-	wkieti<<"___________________________________________________________________________________________"<<endl;
-	wprasti<<left<<setw(20)<<"Pavarde"<<setw(15)<<"Vardas "<<tempSt<<endl;
-	wprasti<<"___________________________________________________________________________________________"<<endl;
+
 	
 	studentas temp;
 	int paz;
@@ -195,26 +190,10 @@ void generuoti(vector<studentas> &mas, int &stCount, int &pazNr)
 		}
 		paz = rand()%11;
 		temp.egz = paz;
-		if (paz == 10) tempSt += to_string(paz) + "   ";
-		else tempSt += " "+ to_string(paz) + "   ";
+		if (paz == 10) tempSt += to_string(paz) + "\n";
+		else tempSt += " "+ to_string(paz) + "\n";
 		
-		
-		temp.vid = 0.4 * vid(temp) + 0.6 * temp.egz;
-		temp.med = 0.4 * med(temp) + 0.6 * temp.egz;
-		
-		write<<left<<setw(20)<<temp.pavarde<<setw(15)<<temp.vardas<<setw(3)<<tempSt<<endl;
-		
-		
-		string eilNr;
-		eilNr = temp.vardas;
-    	eilNr.erase(0,6);
-    	temp.nr = stoi(eilNr);
-		
-		mas.push_back(temp);
-		temp.paz.clear();
-		temp.vardas = "";
-		temp.pavarde = "";
-		stCount++;
+		write<<left<<setw(20)<<temp.pavarde<<setw(15)<<temp.vardas<<setw(3)<<tempSt;
 		
 	}
 	
@@ -234,49 +213,8 @@ void dalinti(studentas temp, vector<studentas> &kieti, vector<studentas> &prasti
 		}
 }
 
-//void kietiOut(studentas &kietas, int pazNr)
-//{
-//	string tempSt = "";
-//	int paz;
-//	
-//	ofstream wkieti("kieti.txt", ios_base::app);
-//	
-//	for (int j = 0; j < pazNr; j++)
-//		{
-//			paz = kietas.paz.at(j);
-//			if (paz == 10) tempSt += to_string(paz) + "   ";
-//			else tempSt += " "+ to_string(paz) + "   ";
-//		}
-//		paz = kietas.egz;
-//		if (paz == 10) tempSt += to_string(paz) + "   ";
-//		else tempSt += " "+ to_string(paz) + "   ";
-//	
-//	wkieti<<left<<setw(20)<<kietas.pavarde<<setw(15)<<kietas.vardas<<setw(3)<<tempSt<<endl;
-//}
-//
-//void prastiOut(studentas &prastas, int pazNr)
-//{
-//	string tempSt = "";
-//	int paz;
-//	
-//	ofstream wprasti("prasti.txt", ios_base::app);
-//	
-//	for (int j = 0; j < pazNr; j++)
-//		{
-//			paz = prastas.paz.at(j);
-//			if (paz == 10) tempSt += to_string(paz) + "   ";
-//			else tempSt += " "+ to_string(paz) + "   ";
-//		}
-//		paz = prastas.egz;
-//		if (paz == 10) tempSt += to_string(paz) + "   ";
-//		else tempSt += " "+ to_string(paz) + "   ";
-//	
-//	wprasti<<left<<setw(20)<<prastas.pavarde<<setw(15)<<prastas.vardas<<setw(3)<<tempSt<<endl;
-//}
-
-void nuskaityti(vector<studentas> &mas, int &stCount)
+void nuskaityti(vector<studentas> &mas, int &stCount, int &pazNr)
 {
-	
 	studentas temp;
 	
 	string fileToRead;
@@ -291,6 +229,8 @@ void nuskaityti(vector<studentas> &mas, int &stCount)
 	{
 		throw "Failas nerastas";
 	}
+
+	auto readStart = system_clock::now();
 	
 	string input;
 	
@@ -322,13 +262,14 @@ void nuskaityti(vector<studentas> &mas, int &stCount)
 		}
 		else // jei input yra skaicius
 		{
-			if (!(stoi(input) >= 0 && stoi(input) <= 10)) // pazimys iseina is ribu [0;10]
+			if (!(stoi(input) >= 0 && stoi(input) <= 10)) // pazymys iseina is ribu [0;10]
 			{
 				getline(read, input);
 				temp.paz.clear();
 				temp.vardas = "";
 				temp.pavarde = "";
 				badFile = true;
+
 				continue;
 			}
 			
@@ -344,6 +285,12 @@ void nuskaityti(vector<studentas> &mas, int &stCount)
 				temp.med = 0.4 * med(temp) + 0.6 * temp.egz;
 			
 				mas.push_back(temp);
+
+				if (stCount == 0)
+				{
+					pazNr = temp.paz.size();
+				}
+
 				temp.paz.clear();
 				temp.vardas = "";
 				temp.pavarde = "";
@@ -354,110 +301,28 @@ void nuskaityti(vector<studentas> &mas, int &stCount)
 	}
 	
 	if (badFile) throw "Neteisingai paruostas failas, kai kurie irasai gali buti praleisti";
+
+	auto readEnd = system_clock::now();
+
+	auto readElapsed =
+	duration_cast<seconds>(readEnd - readStart);
+	cout << endl << "~Nuskaitymo laikas: " << readElapsed.count() << "s." << endl << endl;
 		
 }
 
-//void spausdinti(studentas &temp, char mode)
-//{
-//	
-//	ofstream write("res.txt", ios_base::app);
-//	
-//	if (mode == 'v' || mode == 'V') 
-//	{
-//		write<<left<<setw(20)<<temp.pavarde<<setw(15)<<temp.vardas<<setw(3)<<fixed<<setprecision(2)<<temp.vid<<endl;
-//	}
-//	else if (mode == 'm' || mode == 'M')
-//	{
-//		write<<left<<setw(20)<<temp.pavarde<<setw(15)<<temp.vardas<<setw(3)<<fixed<<setprecision(2)<<temp.med<<endl;
-//	}
-//}
-
-bool swapNames(string v1, string v2)
+bool daugiau(string s1, string s2)
 {
-	bool res = false;
-	
-	if (v1.length() > v2.length()) // jei v2 trumpesnis
-	{
-		for (int i = 0; i < v2.length() - 1; i++)
-		{
-			if(v1[i] > v2[i])
-			{
-				return true;
-			}
-			else if (v1[i] < v2[i])
-			{
-				return false;
-			}
-		}
-		
-		return true; // jei visos raides sutampa, bet v1 turi daugiau raidziu
-		
-	}
-	else // jei v1 trumpesnis
-	{
-		for (int i = 0; i < v1.length() - 1; i++)
-		{
-			if(v1[i] > v2[i])
-			{
-				return true;
-			}
-			else if (v1[i] < v2[i])
-			{
-				return false;
-			}
-		}
-	}
-	return false;
+	return s1 > s2;
 }
 
-void rusiuoti(vector<studentas> &mas)
+int partition(vector<studentas>& mas, int start, int end) // kai vardai nera sabloniniai
 {
-	
-	for (int i = 0; i < mas.size() - 1; i++)
-	{
-		for (int j = i + 1; j < mas.size(); j++)
-		{
-			if (swapNames(mas[i].vardas, mas[j].vardas)) 
-			{
-				swap(mas[i], mas[j]);
-				cout<<i<<endl;
-				i = 0;
-				break;
-			}
-		}
-	}
-}
-
-//void rusiuotiGen(vector<studentas> &mas)
-//{
-//	int j, key;
-//	
-//	studentas temp;
-//	
-//	for (int i = 1; i < mas.size(); i++)
-//	{
-//		key = mas.at(i).nr;
-//		temp = mas.at(i);
-//		j = i - 1;
-//		
-//		while (j >= 0 && mas.at(j).nr > key)
-//		{
-//			mas.at(j+1) = mas.at(j);
-//			j--;
-//		}
-//		mas.at(j+1) = temp;
-//		
-//	}
-//}
-
-int partition(vector<studentas>& mas, int start, int end)
-{
-	int pivot = mas.at(start).nr;
+	string pivot = mas.at(start).vardas;
 
 	int count = 0;
 	for (int i = start + 1; i <= end; i++)
 	{
-		if (mas.at(i).nr <= pivot) count++;
+		if (!daugiau(mas.at(i).vardas, pivot)) count++;
 	}
 
 	int pivotIndex = start + count;
@@ -467,12 +332,12 @@ int partition(vector<studentas>& mas, int start, int end)
 
 	while (i < pivotIndex && j > pivotIndex)
 	{
-		while (mas.at(i).nr <= pivot)
+		while (!daugiau(mas.at(i).vardas, pivot))
 		{
 			i++;
 		}
 
-		while (mas.at(j).nr > pivot)
+		while (daugiau(mas.at(j).vardas, pivot))
 		{
 			j--;
 		}
@@ -486,7 +351,7 @@ int partition(vector<studentas>& mas, int start, int end)
 	return pivotIndex;
 }
 
-void quicksort(vector<studentas>& mas, int start, int end)
+void quicksort(vector<studentas>& mas, int start, int end) // kai vardai nera sabloniniai
 {
 	if (start >= end) return;
 
@@ -499,6 +364,7 @@ void quicksort(vector<studentas>& mas, int start, int end)
 
 void print(vector<studentas> &mas, char mode)
 {
+
 	stringstream stream;
 	string output;
 	ofstream write("res.txt", ios_base::app);
@@ -537,13 +403,22 @@ void print(vector<studentas> &mas, char mode)
 
 void kout(vector<studentas> &kieti, int pazNr)
 {
-	
+	string tempSt = "";
+
+	for (int i = 0; i < pazNr; i++)
+	{
+		tempSt += "paz" + to_string(i + 1) + " ";
+	}
+	tempSt += " egz";
+
+	ofstream wkieti("kieti.txt");
+	wkieti<<left<<setw(20)<<"Pavarde"<<setw(15)<<"Vardas "<<tempSt<<endl;
+	wkieti<<"___________________________________________________________________________________________"<<endl;
+
 	stringstream stream;
 	string output;
 	
 	studentas kietas;
-	
-	ofstream wkieti("kieti.txt", ios_base::app);
 	
 	for (int i = 0; i < kieti.size(); i++)
 	{
@@ -566,13 +441,23 @@ void kout(vector<studentas> &kieti, int pazNr)
 
 void pout(vector<studentas> &prasti, int pazNr)
 {
+
+	string tempSt = "";
+
+	for (int i = 0; i < pazNr; i++)
+	{
+		tempSt += "paz" + to_string(i + 1) + " ";
+	}
+	tempSt += " egz";
+
+	ofstream wprasti("prasti.txt");
+	wprasti << left << setw(20) << "Pavarde" << setw(15) << "Vardas " << tempSt << endl;
+	wprasti << "___________________________________________________________________________________________" << endl;
 	
 	stringstream stream;
 	string output;
 	
 	studentas prastas;
-	
-	ofstream wprasti("prasti.txt", ios_base::app);
 	
 	for (int i = 0; i < prasti.size(); i++)
 	{
