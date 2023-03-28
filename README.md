@@ -43,3 +43,7 @@ LIST:
 100k:  0s,          0s,         0s,                  5s.
 1M:    0s,          0s,         0s,                  8s.
 10M:   9s,          9s,         5s,                  55s.
+
+CPU: 3.60GHz, 6 cores, 12 virtual cores, L1: 384KB, L2: 3.0MB, L3: 32.0MB
+RAM: 16GB, 2400MHz
+SSD: M.2 250GB, read: 550 MB/s, write: 520 MB/s
