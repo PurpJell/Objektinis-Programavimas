@@ -66,6 +66,11 @@ vector:           9s, 12s, 3s, 48s.
 deque:            8s, 19s, 4s, 54s.
 list:             9s, 8s,  5s, 48s.
 
+|optimised vector | 9s | 12s | 2s | 50s |
+|vector |          9s | 12s | 3s | 48s |
+|deque |            8s | 19s | 3s | 54s |
+|list |             9s | 8s | 5s | 48s |
+
 
 
 NAUDOJIMOSI INSTRUKCIJA:
